@@ -25,6 +25,31 @@ gantt
 
 ```
 
+## 플로우차트
+
+```mermaid
+graph LR
+
+    Sensors["센서 시스템 (환경 데이터 수집)"]
+    RGBDepthCamera["RGB-Depth 카메라"]
+    LiDAR["LiDAR"]
+    EmbeddedLinux["임베디드 리눅스 (데이터 처리 및 ADAS 기능)"]
+    Actuators["차량 제어 장치 (예: 조향, 제동)"]
+    DriverDisplay["운전자 디스플레이"]
+    Infotainment["인포테인먼트 시스템"]
+
+    %% 센서에서 임베디드 시스템으로의 데이터 흐름 %%
+    Sensors -->|"RGB & Depth 데이터"| RGBDepthCamera
+    Sensors -->|"3D 포인트 클라우드"| LiDAR
+    RGBDepthCamera -->|"데이터 처리"| EmbeddedLinux
+    LiDAR -->|"데이터 처리"| EmbeddedLinux
+
+    %% 차량 제어 및 운전자 알림 흐름 %%
+    EmbeddedLinux -->|"제어 신호"| Actuators
+    EmbeddedLinux -->|"경고 및 정보"| DriverDisplay
+    EmbeddedLinux -->|"경고 및 알림"| Infotainment
+```
+
 
 ## 개발 환경
 - Ubuntu Linux
