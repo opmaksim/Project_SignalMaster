@@ -68,3 +68,10 @@ graph LR
 - Python 3.12
 - YoloV8
 - Yocto
+
+## 09.25
+- Yolo V8 NAS
+- MMpose
+- PoseC3D
+
+이번주는 데이터셋을 찾아 테스트만 하고, 가능성 여부 확인
