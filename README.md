@@ -51,6 +51,9 @@ graph LR
     EmbeddedLinux -->|"경고 및 알림"| Infotainment
 ```
 
+## 시스템 아키텍쳐
+![시스템 아키텍쳐](https://github.com/user-attachments/assets/bb0c5107-da1c-4e72-b627-c48ee48aabff)
+
 
 ## 개발 환경
 - Ubuntu Linux
