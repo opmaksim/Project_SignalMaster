@@ -1,5 +1,7 @@
 # Traffic Gesture Dataset 설명 및 분석
 
+https://www.uni-ulm.de/in/mwt/forschung/online-datenbank/traffic-gesture-dataset/
+
 ## 1. 제스처 라벨 종류
 Traffic Gesture Dataset은 총 8개의 제스처 라벨로 구성되어 있습니다:
 
