@@ -40,6 +40,6 @@ graph TD
     - **MS-G3D**: 높은 정확도를 제공하지만 더 많은 자원 소모 (8-15 FPS, mAP 87%-90%)
     - **ST-GCN**: 기본적인 동작 인식에는 적합하나, 복잡한 제스처 인식에는 한계가 있음 (10-15 FPS, mAP 81%-85%)
 
-### 참조 논문
-- [MS-G3D 논문](https://ar5iv.labs.arxiv.org/html/2106.15125)
-- [EfficientGCN 논문](https://deepai.org/publication/constructing-stronger-and-faster-baselines-for-skeleton-based-action-recognition)
+### 참조
+- [Efficient Graph Convolutional Network (EfficientGCN) v2 GitHub](https://github.com/attention-eq-everything/effgcn_cam)
+- [Efficient Graph Convolutional Network (EfficientGCN) v2 Paper](https://arxiv.org/pdf/2106.15125)
