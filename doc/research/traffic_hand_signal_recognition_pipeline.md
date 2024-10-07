@@ -6,13 +6,13 @@
 ```mermaid
 graph TD
     FrameInput["📷 프레임 입력"]
-    PersonDetection["Ⓜ️ YOLOv11: 사람 탐지"]
+    PersonDetection["Ⓜ️ YOLOv11L: 사람 탐지"]
     CropForPose["✂️ 포즈/손 인식용 크롭"]
     PoseEstimation["Ⓜ️ 포즈 인식 (Mediapipe Pose Landmark)"]
     HandLandmark["Ⓜ️ 손 랜드마크 탐지 (Mediapipe Hand Landmark)"]
     PoseKeypoints["🦴 3D 관절 위치 출력"]
     HandKeypoints["✋ 손 관절 위치 출력"]
-    ActionRecognition["Ⓜ️ EfficientGCN: 행동 인식"]
+    ActionRecognition["Ⓜ️ EfficientGCN-B4: 행동 인식"]
 
     FrameInput --> PersonDetection
     PersonDetection --> CropForPose
