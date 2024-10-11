@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "delay.h": "c",
+        "gpio.h": "c",
+        "tim.h": "c",
+        "motor.h": "c"
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/chmin/Signal-Project/car",
+            "binaryPath": "/home/chmin/Signal-Project/car/main.o",
+            "binaryArgs": []
+        }
+    ]
+}
