@@ -9,7 +9,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 void UART0_ISR_Process();
-void USART_Init(void);
+void USART_init(void);
 void USART_Transmit(unsigned char data);
 unsigned char USART_Receive(void);
 void UART0_sendString(char *str);

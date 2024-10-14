@@ -8,17 +8,24 @@ F_CPU = 16000000UL
 
 TARGET = main
 PROG_TYPE = arduino
-PORT_NAME = /dev/ttyACM0
+PORT_NAME = /dev/ttyACM2
 BAUD = 115200
 
 RM = rm -rf
 
 # 소스 파일 목록 - 여러 폴더에 있는 소스 파일을 포함
 SRC = main.c \
-      Periph/GPIO/GPIO.c \
-      Periph/TIM/TIM.c \
-      Periph/UART0/UART0.c \
-	  Driver/Motor/Motor.c
+	AP/Listener/Listener.c \
+	AP/Service/Service.c \
+	AP/apMain.c \
+	Model/Model_MotorUARTState/Model_MotorUARTState.c \
+	Model/Model_MotorHCState/Model_MotorHCState.c \
+    Periph/GPIO/GPIO.c \
+    Periph/TIM/TIM.c \
+    Periph/UART0/UART0.c \
+	Driver/HC_SR04/HC_SR04.c \
+	Driver/Motor/Motor.c
+
 
 # 오브젝트 파일 목록 (.c -> .o)
 OBJ = $(SRC:.c=.o)
