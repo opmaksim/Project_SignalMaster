@@ -3,7 +3,13 @@
         "delay.h": "c",
         "gpio.h": "c",
         "tim.h": "c",
-        "motor.h": "c"
+        "motor.h": "c",
+        "model_motorstate.h": "c",
+        "interrupt.h": "c",
+        "listener.h": "c",
+        "model_motorhcstate.h": "c",
+        "model_motoruartstate.h": "c",
+        "hc_sr04.h": "c"
     },
     "makefile.launchConfigurations": [
         {

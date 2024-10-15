@@ -3,7 +3,7 @@
 uint8_t uart0Rxbuff[100];
 uint8_t uart0RxFlag;
 
-void USART_Init(void){
+void USART_init(void){
     UBRR0H = 0x00;            // 9600bps로 설정
     UBRR0L = 207;             
     UCSR0A |= (1<<U2X0);      // 2배속 모드 활성화

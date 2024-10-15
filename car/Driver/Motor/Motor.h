@@ -7,6 +7,7 @@
 #define MOTOR_ICR		ICR1
 #define MOTOR_OCR		OCR1A
 
+
 void Motor_init();
 void Motor_speedMode(uint16_t data);
 #endif
