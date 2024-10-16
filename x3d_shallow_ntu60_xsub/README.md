@@ -1,6 +1,6 @@
 # Learning process
 
-If you check the files for pyskl framework, clone or folk the [Pyskl Github repository](https://github.com/kennymckormick/pyskl/tree/main).
+If you want to check the required files for training and test, clone or folk the [Pyskl Github repository](https://github.com/kennymckormick/pyskl/tree/main).
 
 ## Train command
 
