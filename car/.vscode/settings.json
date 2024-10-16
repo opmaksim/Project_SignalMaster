@@ -9,7 +9,11 @@
         "listener.h": "c",
         "model_motorhcstate.h": "c",
         "model_motoruartstate.h": "c",
-        "hc_sr04.h": "c"
+        "hc_sr04.h": "c",
+        "apmain.h": "c",
+        "service.h": "c",
+        "io.h": "c",
+        "uart0.h": "c"
     },
     "makefile.launchConfigurations": [
         {
