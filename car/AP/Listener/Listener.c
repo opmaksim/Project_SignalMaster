@@ -1,5 +1,4 @@
 #include "Listener.h"
-uint8_t distance;
 
 void Listener_init(){
     Motor_init();
@@ -13,48 +12,37 @@ void Listener_EventCheck(){
 }
 
 void Listener_MotorHCEvent(){
-    distance = measure_distance();
+    uint32_t distance1 = distance[0];  // 첫 번째 센서의 거리
+    uint32_t distance2 = distance[1];  // 두 번째 센서의 거리
+    uint32_t distance3 = distance[2];  // 세 번째 센서의 거리
+
     uint8_t MotorHCState;
     MotorHCState = Model_getMotorHCStateData();
+
     switch (MotorHCState){
     case STOP:
-        if (distance > 70){
-            Model_setMotorHCStateData(FAST);
-        }
-        else if (distance <= 70 && distance > 30){
-            Model_setMotorHCStateData(SLOW);
-        }
-        else if (distance <= 30){
+        // 하나라도 거리가 10보다 크면 FAST로 전환
+        if (distance1 <= (unsigned long *)10 || distance2 <= (unsigned long *)10 || distance3 <= (unsigned long *)10) {
             Model_setMotorHCStateData(STOP);
         }
-        break;
+        else{
+            Model_setMotorHCStateData(FAST);
+        }   
+    break;
     case FAST:   
-        if (distance > 70){
-            Model_setMotorHCStateData(FAST);
-        }
-        else if (distance <= 70 && distance > 30){
-            Model_setMotorHCStateData(SLOW);
-        }
-        else if (distance <= 30){
+        if (distance1 <= (unsigned long *)10 || distance2 <= (unsigned long *)10 || distance3 <= (unsigned long *)10) {
             Model_setMotorHCStateData(STOP);
         }
-        break;
-    case SLOW:
-        if (distance > 70){
+        else{
             Model_setMotorHCStateData(FAST);
-        }
-        else if (distance <= 70 && distance > 30){
-            Model_setMotorHCStateData(SLOW);
-        }
-        else if (distance <= 30){
-            Model_setMotorHCStateData(STOP);
-        }
+        }   
         break;
     }
 }
 
+
+
 void Listener_MotorUartEvent(){
-    distance = measure_distance();
     uint8_t MotorHCState;
     MotorHCState = Model_getMotorUARTStateData();
     if(UART0_getRxFlag())
@@ -67,10 +55,6 @@ void Listener_MotorUartEvent(){
         else if(!strcmp((uint8_t *)rxString, "FAST\n")){
             Model_setMotorUARTStateData(FAST);
             UART0_sendString("FAST\n");
-        }
-        else if(!strcmp((uint8_t *)rxString, "SLOW\n")){
-            Model_setMotorUARTStateData(SLOW);
-            UART0_sendString("SLOW\n");
         }
         UART0_clearRxFlag();
     }

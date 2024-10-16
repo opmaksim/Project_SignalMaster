@@ -9,11 +9,10 @@
 #include "../../Model/Model_MotorUARTState/Model_MotorUARTState.h"
 #include "../../Model/Model_MotorHCState/Model_MotorHCState.h"
 
-enum {STOP = 0, FAST = 1, SLOW = 5};
+enum {STOP = 0, FAST = 1};
 
 void Listener_init();
 void Listener_EventCheck();
 void Listener_MotorHCEvent();
 void Listener_MotorUartEvent();
-void Listener_MotorEvent();
 #endif

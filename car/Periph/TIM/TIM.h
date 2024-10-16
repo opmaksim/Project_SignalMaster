@@ -8,5 +8,6 @@
 
 void TIM0_init();
 void TIM1_init();
+void TIM2_init();
 
 #endif /* TIM0_H_ */
