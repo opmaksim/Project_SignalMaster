@@ -1,7 +1,7 @@
 #include "apMain.h"
 
 extern volatile uint8_t sensor_index;
-extern volatile uint32_t distance[3];
+extern volatile float distance[3];
 
 ISR(USART_RX_vect){
     UART0_ISR_Process();
@@ -19,7 +19,9 @@ void apMain_init(){
     TIM1_init();
     TIM2_init();
     sei();
-    Model_setMotorUARTStateData(FAST);
+    Model_setMotorUARTStateData(GO);
+    Model_setMotorUARTStateData(GO);
+    Model_setMotorDirectionStateData(GO);
 }
 
 void apMain_execute(){

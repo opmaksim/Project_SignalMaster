@@ -4,6 +4,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "../Listener/Listener.h"
+#include "../../Model/Model_MotorDirectionState/Model_MotorDirectionState.h"
 #include "../../Model/Model_MotorUARTState/Model_MotorUARTState.h"
 #include "../../Model/Model_MotorHCState/Model_MotorHCState.h"
 

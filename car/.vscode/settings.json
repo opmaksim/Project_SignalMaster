@@ -13,7 +13,8 @@
         "apmain.h": "c",
         "service.h": "c",
         "io.h": "c",
-        "uart0.h": "c"
+        "uart0.h": "c",
+        "model_motordirectionstate.h": "c"
     },
     "makefile.launchConfigurations": [
         {

@@ -8,7 +8,7 @@ F_CPU = 16000000UL
 
 TARGET = main
 PROG_TYPE = arduino
-PORT_NAME = /dev/ttyACM2
+PORT_NAME = /dev/ttyACM0
 BAUD = 115200
 
 RM = rm -rf
@@ -18,6 +18,7 @@ SRC = main.c \
 	AP/Listener/Listener.c \
 	AP/Service/Service.c \
 	AP/apMain.c \
+	Model/Model_MotorDirectionState/Model_MotorDirectionState.c \
 	Model/Model_MotorUARTState/Model_MotorUARTState.c \
 	Model/Model_MotorHCState/Model_MotorHCState.c \
     Periph/GPIO/GPIO.c \

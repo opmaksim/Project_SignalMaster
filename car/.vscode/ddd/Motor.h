@@ -17,5 +17,8 @@
 
 void Motor_init();
 void Motor_speedMode(uint16_t data);
-void Motor_Control(uint8_t action);
+void Motor_Go();
+void Motor_Left();
+void Motor_Right();
+void Motor_Stop();
 #endif

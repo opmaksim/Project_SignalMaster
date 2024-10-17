@@ -13,9 +13,11 @@
 #define ECHO_PIN_3 7
 
 extern volatile uint8_t sensor_index;  // 현재 측정 중인 센서 인덱스
-extern volatile float distance[3];      // 각 센서의 거리 저장
+extern volatile uint32_t distance[3];      // 각 센서의 거리 저장
 
 void ultrasonic_init();
 void trigger_pulse(uint8_t sensor);
-float measure_distance(uint8_t sensor);
+uint32_t measure_distance(uint8_t sensor);
+uint32_t measure_distance2();
+uint32_t measure_distance3();
 #endif
