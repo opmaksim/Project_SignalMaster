@@ -30,6 +30,24 @@ void Service_MotorData(){
         return;  // 더 이상 처리하지 않고 리턴
     }
 
+    // 3. UART 명령이 LEFT이면 왼쪽으로 회전하면서 GO 상태 유지
+    if (MotorUARTState == LEFT) {
+        Motor_speedMode(GO); 
+        Motor_Control(LEFT); 
+        UART0_sendString("Left\n");
+        lastMotorState = LEFT;
+        return;
+    }
+
+    // 4. UART 명령이 RIGHT이면 오른쪽으로 회전하면서 GO 상태 유지
+    if (MotorUARTState == RIGHT) {
+        Motor_speedMode(GO); 
+        Motor_Control(RIGHT); 
+        UART0_sendString("Right\n");
+        lastMotorState = RIGHT;
+        return;
+    }
+
     // 3. UART 명령이 GO이면 기본 상태로 전환하고 초음파 상태를 확인
     if (MotorUARTState == GO) {
         // 3-1. 초음파 상태가 STOP이면 초음파 신호에 따라 상태 변경

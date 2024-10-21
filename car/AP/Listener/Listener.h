@@ -3,6 +3,7 @@
 #define F_CPU 16000000UL
 #include <avr/io.h>
 #include <util/delay.h>
+#include <string.h>
 #include "../../Driver/Motor/Motor.h"
 #include "../../Periph/UART0/UART0.h"
 #include "../../Driver/HC_SR04/HC_SR04.h"
