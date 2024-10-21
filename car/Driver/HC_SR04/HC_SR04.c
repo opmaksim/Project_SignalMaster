@@ -1,7 +1,7 @@
 #include "HC_SR04.h"
 
 volatile uint8_t sensor_index = 0;   // 전역 변수 정의
-volatile float distance[3] = {0.0,};  // 각 센서의 거리 저장 (소숫점 포함)
+volatile float distance[4] = {0.0,};  // 각 센서의 거리 저장 (소숫점 포함)
 
 void ultrasonic_init() {
     Gpio_initPin(&DDRD, OUTPUT, TRIG_PIN_1);
@@ -10,6 +10,8 @@ void ultrasonic_init() {
     Gpio_initPin(&DDRD, INPUT, ECHO_PIN_2);
     Gpio_initPin(&DDRD, OUTPUT, TRIG_PIN_3);
     Gpio_initPin(&DDRD, INPUT, ECHO_PIN_3);
+    Gpio_initPin(&DDRC, OUTPUT, TRIG_PIN_4);
+    Gpio_initPin(&DDRC, INPUT, ECHO_PIN_4);
 }
 
 void trigger_pulse(uint8_t sensor) {
@@ -34,6 +36,13 @@ void trigger_pulse(uint8_t sensor) {
         PORTD |= (1 << TRIG_PIN_3);
         _delay_us(10);
         PORTD &= ~(1 << TRIG_PIN_3);
+    }
+    else if (sensor == 3) {
+        PORTC &= ~(1 << TRIG_PIN_4);
+        _delay_us(2);
+        PORTC |= (1 << TRIG_PIN_4);
+        _delay_us(10);
+        PORTC &= ~(1 << TRIG_PIN_4);
     }
 }
 
@@ -67,6 +76,15 @@ float measure_distance(uint8_t sensor) {
             if(timeout-- == 0) return -1;
         }
         while (PIND & (1 << ECHO_PIN_3)) {
+            if(time++ >= 5000) break;
+            _delay_us(1);
+        }
+    }
+    else if (sensor == 3) {
+        while (!(PINC & (1 << ECHO_PIN_4))) {
+            if(timeout-- == 0) return -1;
+        }
+        while (PINC & (1 << ECHO_PIN_4)) {
             if(time++ >= 5000) break;
             _delay_us(1);
         }

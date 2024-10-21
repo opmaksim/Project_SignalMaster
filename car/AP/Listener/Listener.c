@@ -3,6 +3,7 @@
 float distance1;  // float로 변경
 float distance2;  // float로 변경
 float distance3;  // float로 변경
+float distance4;
 
 void Listener_init(){
     Motor_init();
@@ -14,6 +15,7 @@ void Listener_EventCheck(){
     distance1 = distance[0];  // 첫 번째 센서의 거리 (float)
     distance2 = distance[1];  // 두 번째 센서의 거리 (float)
     distance3 = distance[2];  // 세 번째 센서의 거리 (float)
+    distance4 = distance[3];
     Listener_MotorHCEvent();
     Listener_MotorUartEvent();
     Listener_MotorDirectionEvent();
@@ -26,12 +28,13 @@ void Listener_MotorHCEvent(){
     switch (MotorHCState){
     case STOP:
         // 하나라도 거리가 15cm 이내이면 STOP으로 전환
-        if (distance1 <= 15.0 || distance2 <= 15.0 || distance3 <= 15.0) {
+        if (distance1 <= 15.0 || distance2 <= 15.0 || distance3 <= 15.0 || distance4 <= 15.0) {
             Model_setMotorHCStateData(STOP);
         }
         else if ((distance1 > 15.0 && distance1 <= 20.0)
                 || (distance2 > 15.0 && distance2 <= 20.0)
-                || (distance3 > 15.0 && distance3 <= 20.0)){
+                || (distance3 > 15.0 && distance3 <= 20.0)
+                || (distance4 > 15.0 && distance4 <= 20.0)){
             Model_setMotorHCStateData(SLOW);
         }
         else{
@@ -40,12 +43,13 @@ void Listener_MotorHCEvent(){
         break;
     case GO:   
         // 하나라도 거리가 15cm 이내이면 STOP으로 전환
-        if (distance1 <= 15.0 || distance2 <= 15.0 || distance3 <= 15.0) {
+        if (distance1 <= 15.0 || distance2 <= 15.0 || distance3 <= 15.0 || distance4 <= 15.0) {
             Model_setMotorHCStateData(STOP);
         }
         else if ((distance1 > 15.0 && distance1 <= 20.0)
                 || (distance2 > 15.0 && distance2 <= 20.0)
-                || (distance3 > 15.0 && distance3 <= 20.0)){
+                || (distance3 > 15.0 && distance3 <= 20.0)
+                || (distance4 > 15.0 && distance4 <= 20.0)){
             Model_setMotorHCStateData(SLOW);
         }
         else{
@@ -54,12 +58,13 @@ void Listener_MotorHCEvent(){
         break;
     case SLOW:
         // 하나라도 거리가 15cm 이내이면 STOP으로 전환
-        if (distance1 <= 15.0 || distance2 <= 15.0 || distance3 <= 15.0) {
+        if (distance1 <= 15.0 || distance2 <= 15.0 || distance3 <= 15.0 || distance4 <= 15.0) {
             Model_setMotorHCStateData(STOP);
         }
         else if ((distance1 > 15.0 && distance1 <= 20.0)
                 || (distance2 > 15.0 && distance2 <= 20.0)
-                || (distance3 > 15.0 && distance3 <= 20.0)){
+                || (distance3 > 15.0 && distance3 <= 20.0)
+                || (distance4 > 15.0 && distance4 <= 20.0)){
             Model_setMotorHCStateData(SLOW);
         }
         else{
@@ -87,6 +92,14 @@ void Listener_MotorUartEvent(){
             Model_setMotorUARTStateData(SLOW);
             UART0_sendString("SLOW\n");
         }
+        else if(!strcmp((uint8_t *)rxString, "LEFT\n")){
+            Model_setMotorUARTStateData(LEFT);
+            UART0_sendString("LEFT\n");
+        }
+        else if(!strcmp((uint8_t *)rxString, "RIGHT\n")){
+            Model_setMotorUARTStateData(RIGHT);
+            UART0_sendString("RIGHT\n");
+        }
         UART0_clearRxFlag();
     }
 }
@@ -98,12 +111,11 @@ void Listener_MotorDirectionEvent(){
     MotorDirectionState = Model_getMotorDirectionStateData();
 
     // 임계값을 기준으로 좌우 전환
-    if ((distance2 - distance3) >= threshold) {
+    if (((distance2 - distance3) >= threshold)) {
         Model_setMotorDirectionStateData(LEFT);
     }
-    else if ((distance3 - distance2) >= threshold) {
+    else if (((distance3 - distance2) >= threshold)) {
         Model_setMotorDirectionStateData(RIGHT);
     }
     // 거리 차이가 임계값 이하인 경우는 방향 유지
 }
-

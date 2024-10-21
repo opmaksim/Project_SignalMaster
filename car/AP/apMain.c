@@ -1,7 +1,7 @@
 #include "apMain.h"
 
 extern volatile uint8_t sensor_index;
-extern volatile float distance[3];
+extern volatile float distance[4];
 
 ISR(USART_RX_vect){
     UART0_ISR_Process();
@@ -9,7 +9,7 @@ ISR(USART_RX_vect){
 
 ISR(TIMER2_COMPA_vect) {
         distance[sensor_index] = measure_distance(sensor_index);  // 현재 센서의 거리 측정
-        sensor_index = (sensor_index + 1) % 3;  // 다음 센서로 전환
+        sensor_index = (sensor_index + 1) % 4;  // 다음 센서로 전환
 
 }
 
