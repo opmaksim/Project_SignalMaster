@@ -22,7 +22,7 @@ void Service_MotorData(){
     }
 
     // 2. UART 명령이 SLOW이면 SLOW 상태를 유지 (STOP 또는 GO 명령이 들어올 때까지 유지)
-    if (MotorUARTState == SLOW) {
+    else if (MotorUARTState == SLOW) {
         Motor_speedMode(SLOW); 
         Motor_Control(GO); 
         UART0_sendString("Slow\n");
@@ -31,7 +31,7 @@ void Service_MotorData(){
     }
 
     // 3. UART 명령이 LEFT이면 왼쪽으로 회전하면서 GO 상태 유지
-    if (MotorUARTState == LEFT) {
+    else if (MotorUARTState == LEFT) {
         Motor_speedMode(GO); 
         Motor_Control(LEFT); 
         UART0_sendString("Left\n");
@@ -40,7 +40,7 @@ void Service_MotorData(){
     }
 
     // 4. UART 명령이 RIGHT이면 오른쪽으로 회전하면서 GO 상태 유지
-    if (MotorUARTState == RIGHT) {
+    else if (MotorUARTState == RIGHT) {
         Motor_speedMode(GO); 
         Motor_Control(RIGHT); 
         UART0_sendString("Right\n");
@@ -49,7 +49,7 @@ void Service_MotorData(){
     }
 
     // 3. UART 명령이 GO이면 기본 상태로 전환하고 초음파 상태를 확인
-    if (MotorUARTState == GO) {
+    else if (MotorUARTState == GO) {
         // 3-1. 초음파 상태가 STOP이면 초음파 신호에 따라 상태 변경
         if (MotorHCState == STOP) {
             Motor_speedMode(GO);    
@@ -65,13 +65,14 @@ void Service_MotorData(){
             UART0_sendString("Slow\n");
             lastMotorState = SLOW;  // 상태를 SLOW로 업데이트
             return;
+            
         }
-
         // 3-3. 기본 상태는 GO로 설정
         Motor_speedMode(GO);  // 기본 상태로 모터를 GO로 작동
         Motor_Control(GO);
         UART0_sendString("Go\n");
         lastMotorState = GO;  // 상태를 GO로 업데이트
+        return;
     }
 }
 

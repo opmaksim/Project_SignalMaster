@@ -8,7 +8,7 @@ F_CPU = 16000000UL
 
 TARGET = main
 PROG_TYPE = arduino
-PORT_NAME = /dev/ttyACM1
+PORT_NAME = /dev/ttyACM0
 BAUD = 115200
 
 RM = rm -rf

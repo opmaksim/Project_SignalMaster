@@ -28,13 +28,13 @@ void Listener_MotorHCEvent(){
     switch (MotorHCState){
     case STOP:
         // 하나라도 거리가 15cm 이내이면 STOP으로 전환
-        if (distance1 <= 15.0 || distance2 <= 15.0 || distance3 <= 15.0 || distance4 <= 15.0) {
+        if (distance1 <= 25.0 || distance2 <= 25.0 || distance3 <= 25.0 || distance4 <= 25.0) {
             Model_setMotorHCStateData(STOP);
         }
-        else if ((distance1 > 15.0 && distance1 <= 20.0)
-                || (distance2 > 15.0 && distance2 <= 20.0)
-                || (distance3 > 15.0 && distance3 <= 20.0)
-                || (distance4 > 15.0 && distance4 <= 20.0)){
+        else if ((distance1 > 25.0 && distance1 <= 30.0)
+                || (distance2 > 25.0 && distance2 <= 30.0)
+                || (distance3 > 25.0 && distance3 <= 30.0)
+                || (distance4 > 25.0 && distance4 <= 30.0)){
             Model_setMotorHCStateData(SLOW);
         }
         else{
@@ -43,13 +43,13 @@ void Listener_MotorHCEvent(){
         break;
     case GO:   
         // 하나라도 거리가 15cm 이내이면 STOP으로 전환
-        if (distance1 <= 15.0 || distance2 <= 15.0 || distance3 <= 15.0 || distance4 <= 15.0) {
+        if (distance1 <= 25.0 || distance2 <= 25.0 || distance3 <= 25.0 || distance4 <= 25.0) {
             Model_setMotorHCStateData(STOP);
         }
-        else if ((distance1 > 15.0 && distance1 <= 20.0)
-                || (distance2 > 15.0 && distance2 <= 20.0)
-                || (distance3 > 15.0 && distance3 <= 20.0)
-                || (distance4 > 15.0 && distance4 <= 20.0)){
+        else if ((distance1 > 25.0 && distance1 <= 30.0)
+                || (distance2 > 25.0 && distance2 <= 30.0)
+                || (distance3 > 25.0 && distance3 <= 30.0)
+                || (distance4 > 25.0 && distance4 <= 30.0)){
             Model_setMotorHCStateData(SLOW);
         }
         else{
@@ -58,13 +58,13 @@ void Listener_MotorHCEvent(){
         break;
     case SLOW:
         // 하나라도 거리가 15cm 이내이면 STOP으로 전환
-        if (distance1 <= 15.0 || distance2 <= 15.0 || distance3 <= 15.0 || distance4 <= 15.0) {
+        if (distance1 <= 25.0 || distance2 <= 25.0 || distance3 <= 25.0 || distance4 <= 25.0) {
             Model_setMotorHCStateData(STOP);
         }
-        else if ((distance1 > 15.0 && distance1 <= 20.0)
-                || (distance2 > 15.0 && distance2 <= 20.0)
-                || (distance3 > 15.0 && distance3 <= 20.0)
-                || (distance4 > 15.0 && distance4 <= 20.0)){
+        else if ((distance1 > 25.0 && distance1 <= 30.0)
+                || (distance2 > 25.0 && distance2 <= 30.0)
+                || (distance3 > 25.0 && distance3 <= 30.0)
+                || (distance4 > 25.0 && distance4 <= 30.0)){
             Model_setMotorHCStateData(SLOW);
         }
         else{
