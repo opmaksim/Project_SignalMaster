@@ -363,3 +363,65 @@ model.export(
 
 stop.. after convert onnx... during converting tensorrt
 """
+
+
+
+
+
+
+
+
+
+# %% Camera streaming FPS test 📅 2024-12-30 07:11:32
+# ➡️ ❗ Do not use "cv2.imshow("Test Window", frame)" in JetSon Nano for performance!
+#      instead, use "plt.imshow"
+
+
+def display_frame_in_notebook(frame):
+    """Displays a single frame in the Jupyter notebook."""
+    clear_output(wait=True)  # Clear previous output for smooth streaming
+    plt.imshow(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))  # Convert BGR to RGB
+    plt.axis("off")  # Hide axes for cleaner output
+    display(plt.gcf())  # Display the current figure
+    plt.close()  # Close to prevent memory leaks
+
+
+def calculate_fps():
+    """Measures FPS and displays frames in Jupyter."""
+    cap = cv2.VideoCapture(0)  # Initialize camera (0 for default webcam)
+
+    frame_count = 0
+    start_time = time.time()  # Start timer
+
+    try:
+        while True:
+            ret, frame = cap.read()
+            if not ret:
+                print("Failed to capture frame")
+                break
+
+            frame_count += 1  # Increment frame count
+            display_frame_in_notebook(frame)  # Show frame in notebook
+
+            # Calculate and print FPS every 5 seconds
+            if time.time() - start_time >= 5:
+                fps = frame_count / 5
+                print(f"FPS: {fps:.2f}")
+                frame_count = 0  # Reset frame count
+                start_time = time.time()  # Reset timer
+
+            # Stop if ESC key is pressed
+            if cv2.waitKey(1) & 0xFF == 27:
+                print("Stream stopped by user")
+                break
+
+    except KeyboardInterrupt:
+        print("Video stream stopped manually")
+
+    finally:
+        cap.release()  # Release the camera
+        cv2.destroyAllWindows()  # Close all OpenCV windows
+
+
+if __name__ == "__main__":
+    calculate_fps()
