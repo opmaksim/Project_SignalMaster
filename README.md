@@ -157,4 +157,18 @@ Signal Masters는 YOLO-Pose 모델을 사용하여 다음과 같은 교통 수�
 ## 발표 자료
 
 ## 시연 영상
-.
+
+### [초음파 자율주행](https://drive.google.com/file/d/1LynHMcAe_OcXiIWh1sUs9sHc4SFS0w5k/view?usp=sharing)
+![alt text](<video/초음파 자율주행.gif>)
+
+### [stop](https://drive.google.com/file/d/1oyC-Y7j-MBj6KcED1z0zxYbD8rTYaeVG/view?usp=sharing)
+![alt text](video/stop.gif)
+
+### [slow](https://drive.google.com/file/d/1LGg1vh6VOTCH6Y1CJtnxA6oF1tWf-Eti/view?usp=sharing)
+![alt text](video/slow.gif)
+
+### [left](https://drive.google.com/file/d/1ITP0SwLXomaiNytANyIgitCj2o7hwRe2/view?usp=sharing)
+![alt text](video/left.gif)
+
+### [right](https://drive.google.com/file/d/1uQk3BmONCKeq9H47o0xfgPW1O86qV4sX/view?usp=sharing)
+![alt text](video/right.gif)
