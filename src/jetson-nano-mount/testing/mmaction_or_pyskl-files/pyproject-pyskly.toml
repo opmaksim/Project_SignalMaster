@@ -1,0 +1,39 @@
+## 📝 This file must be located in external/pyskl as "pyproject.toml".
+# when main project's pyproject.toml find sub-project from 'pyskl = {path = "external/pyskl", develop = true}'
+# poetry would find pyproject.toml or setup.py.
+
+
+[tool.poetry]
+name = "pyskl"
+version = "0.1.0"
+description = "A Toolbox for skeleton-based action recognition"
+authors = ["wbfw109 <wbfw109@gmail.com>", "Haodong Duan <dhd.efz@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/kennymckormick/pyskl"
+keywords = ["computer vision", "video understanding", "skeleton-based action recognition"]
+
+packages = [
+    { include = "pyskl" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+decord = ">=0.6.0"
+fvcore = "*"
+matplotlib = "*"
+mmcv = "1.5.0"
+mmdet = "2.23.0"
+mmpose = "0.24.0"
+moviepy = "^1.0.3"
+numpy = ">=1.19.5"
+opencv-contrib-python = "*"
+opencv-python = "*"
+pymemcache = "*"
+scipy = "*"
+torch = ">=1.5"
+tqdm = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
