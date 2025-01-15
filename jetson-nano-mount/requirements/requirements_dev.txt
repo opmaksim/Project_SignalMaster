@@ -1,2 +1,0 @@
-black
-pyserial==3.5
